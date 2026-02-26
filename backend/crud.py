@@ -1,8 +1,11 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 from passlib.context import CryptContext
-import models
-import schemas
+try:
+    from . import models, schemas
+except ImportError:
+    import models
+    import schemas
 from datetime import datetime
 from typing import Optional, List
 

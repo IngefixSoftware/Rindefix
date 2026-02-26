@@ -14,11 +14,16 @@ from email.message import EmailMessage
 from io import BytesIO
 from openpyxl import load_workbook
 
-from database import get_db, engine
-import models
-import schemas
-from schemas import ReportEmailRequest
-import crud
+try:
+    from .database import get_db, engine
+    from . import models, schemas, crud
+    from .schemas import ReportEmailRequest
+except ImportError:
+    from database import get_db, engine
+    import models
+    import schemas
+    from schemas import ReportEmailRequest
+    import crud
 
 BASE_DIR = Path(__file__).resolve().parent
 UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", BASE_DIR / "uploads"))
