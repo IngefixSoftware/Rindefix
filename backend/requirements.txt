@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy
+mysql-connector-python
+psycopg2-binary
+python-multipart
+pydantic
+passlib[bcrypt]
+email-validator
+openpyxl
