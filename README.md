@@ -117,7 +117,7 @@ Implementadas principalmente en `backend/crud.py`.
 
 ## 6) API (endpoints)
 
-Base local por defecto: `http://localhost:8000`
+Base por defecto: `https://rindefixbackend-nxwf.onrender.com`
 
 Autenticación actual: login simple por correo/clave, **sin JWT**.
 
@@ -203,7 +203,7 @@ Eventos emitidos (broadcast):
 
 ## Frontend
 
-- `VITE_API_URL` (si no existe usa `http://localhost:8000`)
+- `VITE_API_URL` (si no existe usa `https://rindefixbackend-nxwf.onrender.com`)
 - `VITE_WS_URL` (opcional; si no existe deriva desde `VITE_API_URL`)
 
 ## 9) Cómo levantar en local
@@ -217,6 +217,15 @@ source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
 ```
+
+## Despliegue en Render (Web Service)
+
+- Si el `Root Directory` de Render es `backend`, usa:
+  - `Start Command`: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Si el `Root Directory` es la raíz del repo, usa:
+  - `Start Command`: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
+
+Si aparece `ModuleNotFoundError: No module named 'backend'`, el `Start Command` no coincide con el `Root Directory`.
 
 ## Frontend
 
